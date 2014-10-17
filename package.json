@@ -1,0 +1,27 @@
+{
+  "name": "stalker-ipfind",
+  "version": "0.0.1",
+  "description": "A ip data finder and .txt covnert to .dat",
+  "author": {
+    "name": "Theo Wang",
+    "email": "ksky521@gmail.com"
+  },
+  "bin": {
+    "ipfind": "bin/ipfind"
+  },
+  "engines": {
+    "node": ">= 0.10"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "commander": "^2.2.0",
+    "autobuffer": "^0.0.3"
+  },
+  "keywords": [
+    "stalker",
+    "log",
+    "ip",
+    "covnert"
+  ],
+  "readmeFilename": "README.md"
+}

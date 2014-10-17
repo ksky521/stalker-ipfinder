@@ -1,0 +1,54 @@
+#!/usr/bin/env node
+
+var versions = require('../package').version;
+
+//引入外部依赖
+var Commander = require('commander');
+//引入lib
+
+Commander.version(versions);
+
+
+//入库操作
+Commander.command('txt2dat')
+    .usage('[filename]')
+    .description('convert .txt to .dat')
+    .option('-o, --output [filename]', 'output file name')
+    .action(function(filename, options) {
+        if (typeof filename !== 'string') {
+            console.log('ERROR: please input filename！');
+            this.commands[0].outputHelp()
+            return;
+        }
+        var convert = require('../lib/convert').convert2Dat;
+        convert(filename, options.output);
+
+    }).on('--help', function() {
+        console.log('  Examples:');
+        console.log();
+        console.log('  ipfind txt2dat a.txt a.dat');
+        console.log();
+    });
+//查找ip
+Commander.command('*')
+    .usage('[ip] [datfile]')
+    .description('find ip from datfile')
+    .action(function(ip, options) {
+
+        var finder = require('../lib/ipfind');
+
+        console.log(finder.findSync(ip).join(','));
+
+    }).on('--help', function() {
+        console.log('  Examples:');
+        console.log();
+        console.log('  ipfind  123.254.108.11 path/to/dat');
+        console.log();
+    });
+Commander.parse(process.argv);
+
+
+if (!Commander.args[0]) {
+    process.stdout.write(Commander.helpInformation());
+    Commander.emit('--help');
+}

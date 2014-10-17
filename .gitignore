@@ -26,3 +26,5 @@ node_modules
 
 # Users Environment Variables
 .lock-wscript
+/colombo_iplib.dat
+/colombo_iplib.txt
