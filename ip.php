@@ -55,7 +55,7 @@ class IP {
 
         fseek(self::$fp, self::$offset['len'] + $index_offset['len']);
 
-        self::$cached[$nip] = explode("|", fread(self::$fp, $index_length['len']));
+        self::$cached[$nip] = explode('|', fread(self::$fp, $index_length['len']));
 
         return self::$cached[$nip];
     }
@@ -85,6 +85,3 @@ class IP {
     }
 }
 
-$t = microtime();
-var_dump(IP::find('61.135.169.80'));
-echo microtime() - $t;
