@@ -12,6 +12,10 @@
   "engines": {
     "node": ">= 0.10"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ksky521/stalker-ipfind"
+  },
   "main": "index.js",
   "dependencies": {
     "commander": "^2.2.0",
